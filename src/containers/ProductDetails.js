@@ -6,6 +6,8 @@ import {
   selectedProduct,
   removeSelectedProduct,
 } from "../redux/actions/productsActions";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 const ProductDetails = () => {
   const { productId } = useParams();
   let product = useSelector((state) => state.product);
@@ -29,7 +31,29 @@ const ProductDetails = () => {
   return (
     <div className="ui grid container">
       {Object.keys(product).length === 0 ? (
-        <div>...Loading</div>
+        <div><Skeleton count={1}   style={{
+          border: '1px solid #ccc',
+          display: 'block',
+          lineHeight: 1,
+          marginBottom: '0.5rem',
+          width: 80,
+          backgroundColor:'#ddd',
+          borderRadius:'50%',
+          height:80,
+
+      }}/>
+      <Skeleton count={2} style={{
+         border: '1px solid #ccc',
+         display: 'block',
+         lineHeight: 1,
+         marginBottom: '0.5rem',
+         width: 400,
+         backgroundColor:'#ddd',
+         
+         
+      }}/>
+
+      </div>
       ) : (
         <div className="ui placeholder segment">
           <div className="ui two column stackable center aligned grid">
